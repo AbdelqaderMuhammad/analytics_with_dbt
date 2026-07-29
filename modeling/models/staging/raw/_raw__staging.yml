@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw
+    database: analytics_dev
+    schema: raw
+    tables:
+      - name: customers
+      - name: products
+      - name: orders
+      - name: order_items
+      - name: payments
+      - name: support_tickets
+      - name: marketing_spend
