@@ -1,19 +1,23 @@
-WITH source AS (
-    SELECT * FROM {{ source('raw', 'customers') }}
+-- explicit casting 
+-- explicit selection of columns
+
+
+with source as (
+    select * from {{ source('raw', 'customers') }}
 ),
-modified_source AS (
-    SELECT
-    CUSTOMER_ID, 
-    FIRST_NAME,
-    LAST_NAME,
-    EMAIL,
-    SIGNUP_DATE::DATE AS SIGNUP_DATE,
-    ACQUISITION_CHANNEL,
-    REGION,
-    TIER,
-    UPDATED_AT::TIMESTAMP AS UPDATED_AT
-    FROM source
+
+renamed as (
+    select
+        customer_id::integer         as customer_id,
+        first_name,
+        last_name,
+        email,
+        signup_date::date            as signup_date,
+        acquisition_channel,
+        region,
+        tier,
+        updated_at::timestamp        as updated_at
+    from source
 )
 
-SELECT * 
-FROM modified_source
+select * from renamed

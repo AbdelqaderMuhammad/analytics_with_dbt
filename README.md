@@ -11,6 +11,7 @@ Practice dataset: use a generic, well-known sample schema (e.g. the dbt communit
 - **1.4 Define Sources and Seeds** — declare raw tables as sources (freshness checks, lineage); load static lookup tables via seeds.
 - **1.5 Implement Basic Tests and Documentation**
     - Schema tests (`not_null`, `unique`, `accepted_values`, `relationships`), `dbt test`.
+    
     - **Unit tests** — mock inputs and assert transformation logic on at least one non-trivial model (distinct from schema tests: this validates _logic_, not just output shape).
     - `schema.yml` docs; `dbt docs generate` / `dbt docs serve`.
 

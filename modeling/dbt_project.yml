@@ -33,3 +33,6 @@ models:
       +materialized: table
       +schema: marts
 
+seeds:
+  modeling:
+    +schema: seeds

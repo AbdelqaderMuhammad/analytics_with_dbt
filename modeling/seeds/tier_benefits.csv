@@ -1,0 +1,5 @@
+tier,discount_pct,free_shipping_threshold,tier_description
+bronze,0.00,50.00,Standard tier - no discount
+silver,0.05,35.00,5% discount on all orders
+gold,0.10,0.00,10% discount
+platinum,0.15,0.00,15% discount
