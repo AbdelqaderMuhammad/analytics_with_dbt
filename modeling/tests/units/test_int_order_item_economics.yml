@@ -1,0 +1,16 @@
+unit_tests:
+  - name: test_margin_calculation
+    description: Margin is revenue minus cost, summed correctly across multiple line items on one order.
+    model: int_order_item_economics
+    given:
+      - input: ref('stg_order_items')
+        rows:
+          - {order_item_id: 1, order_id: 100, product_id: 1, quantity: 2, unit_price_at_order: 50.00}
+          - {order_item_id: 2, order_id: 100, product_id: 2, quantity: 1, unit_price_at_order: 30.00}
+      - input: ref('stg_products')
+        rows:
+          - {product_id: 1, unit_cost: 20.00}
+          - {product_id: 2, unit_cost: 10.00}
+    expect:
+      rows:
+        - {order_id: 100, item_count: 3, gross_revenue: 130.00, total_cost: 50.00, gross_margin: 80.00}

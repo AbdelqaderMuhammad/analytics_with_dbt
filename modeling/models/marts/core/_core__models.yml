@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: One row per customer, with tier benefits and lifetime order aggregates.
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]
+
+  - name: dim_products
+    description: One row per product, with cost, price, and margin.
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+
+  - name: fct_orders
+    description: One row per order, with revenue, margin, payment, and support-ticket facts.
+    columns:
+      - name: order_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
