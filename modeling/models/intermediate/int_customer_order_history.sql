@@ -14,6 +14,7 @@ aggregated as (
         min(order_at)         as first_order_at,
         max(order_at)         as most_recent_order_at
     from completed_orders
+    where order_at >= '{{ var("min_order_date") }}'
     group by customer_id
 )
 
